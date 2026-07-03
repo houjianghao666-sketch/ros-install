@@ -1,6 +1,6 @@
 #!/bin/bash
 # ROS 快速安装工具
-# 用法: wget <你的网址>/ros-install.sh -O fishros && bash fishros
+# 用法: wget <你的网址>/ros-install.sh -O ros-quick && bash ros-quick
 # 或:   curl -fsSL <你的网址>/ros-install.sh | bash
 
 set -e
