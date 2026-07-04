@@ -1,0 +1,17 @@
+#!/bin/bash
+# ROS 快速安装工具
+
+FISHROS_URL=${FISHROS_URL:-http://mirror.fishros.com/install/}
+export FISHROS_URL
+
+mkdir -p /tmp/fishinstall/tools/translation/assets
+cp /home/tstj/ros-install/install.py /tmp/fishinstall/install.py
+source /etc/profile
+
+SUDO=''
+if [ $UID -ne 0 ]; then
+    SUDO='sudo'
+fi
+$SUDO apt install python3-distro python3-yaml -y
+$SUDO python3 /tmp/fishinstall/install.py
+$SUDO rm -rf /tmp/fishinstall/

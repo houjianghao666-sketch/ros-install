@@ -1,0 +1,10 @@
+# 1. 打开浏览器，访问 https://github.com/new
+#    仓库名填 ros-install，设为 Public，不要勾选任何初始化选项，点 Create repository
+
+# 2. 在终端运行下面这条，推送代码到 GitHub：
+cd /home/tstj/ros-install && git remote add origin https://github.com/houjianghao666/ros-install.git && git push -u origin master
+
+# 3. 去仓库 Settings > Pages，Source 选 master 分支，点 Save
+
+# 4. 之后别人就能用这行命令安装了：
+wget https://houjianghao666.github.io/ros-install/ros-install.sh -O ros-quick && bash ros-quick
