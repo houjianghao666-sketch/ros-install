@@ -52,6 +52,7 @@ for tid, info in tools.items():
 tool_categories = {k: v for k, v in tool_categories.items() if v}
 
 def main():
+    global url_prefix
     os.system("mkdir -p /tmp/fishinstall/tools/translation/assets")
     if url_prefix:
         os.system("wget {} -O /tmp/fishinstall/{} --no-check-certificate".format(base_url, base_url.replace(url_prefix, "")))
