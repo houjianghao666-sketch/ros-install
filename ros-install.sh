@@ -11,11 +11,14 @@ export FISHROS_URL
 echo ">>> ROS 快速安装工具 <<<"
 echo ">>> 正在准备环境..."
 
-mkdir -p /tmp/fishinstall/tools/translation/assets
+rm -rf /tmp/ros-quick/
+mkdir -p /tmp/ros-quick/tools/translation/assets
 
 # ===== 内嵌 install.py =====
 python3 -c '
-import os, importlib, copy
+import os, sys, importlib, copy
+
+sys.path.insert(0, "/tmp/ros-quick/")
 
 url_prefix = os.environ.get("FISHROS_URL", "http://mirror.fishros.com/install/")
 base_url = os.path.join(url_prefix, "tools/base.py")
@@ -53,10 +56,10 @@ tool_categories = {k: v for k, v in tool_categories.items() if v}
 
 def main():
     global url_prefix
-    os.system("mkdir -p /tmp/fishinstall/tools/translation/assets")
+    os.system("mkdir -p /tmp/ros-quick/tools/translation/assets")
     if url_prefix:
-        os.system("wget {} -O /tmp/fishinstall/{} --no-check-certificate".format(base_url, base_url.replace(url_prefix, "")))
-        os.system("wget {} -O /tmp/fishinstall/{} --no-check-certificate".format(translator_url, translator_url.replace(url_prefix, "")))
+        os.system("wget {} -O /tmp/ros-quick/{} --no-check-certificate".format(base_url, base_url.replace(url_prefix, "")))
+        os.system("wget {} -O /tmp/ros-quick/{} --no-check-certificate".format(translator_url, translator_url.replace(url_prefix, "")))
 
     from tools.base import CmdTask, FileUtils, PrintUtils, ChooseTask, ChooseWithCategoriesTask, Tracking
     from tools.base import encoding_utf8, osversion, osarch
